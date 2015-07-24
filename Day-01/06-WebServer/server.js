@@ -10,6 +10,8 @@ var server = http.createServer(function(req, res){
         res.end();
         return;
     }
-    fs.createReadStream(resource).pipe(res);
+    res.setHeader("Content-Type", "text/html");
+    var stream = fs.createReadStream(resource);
+    stream.pipe(res);
 });
 server.listen(9090);
