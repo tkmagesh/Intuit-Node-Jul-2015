@@ -17,6 +17,10 @@ router.get('/new', function(req, res, next){
     res.render('tasks/new');
 });
 
+router.get('/api', function(req, res, next){
+    res.json({tasks : tasks});
+});
+
 //access the data and save it
 router.post('/new', function(req, res, next){
     var newTaskId = tasks.reduce(function(result, task){
@@ -35,7 +39,8 @@ router.get('/toggle/:id', function(req, res, next){
     var taskId = parseInt(req.params.id,10);
     var task = tasks.filter(function(task){ return task.id === taskId })[0];
     task.isCompleted = !task.isCompleted;
-    res.redirect('/tasks');
+    //res.redirect('/tasks');
+    res.json(task);
 })
 
 module.exports = router;

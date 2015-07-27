@@ -5,14 +5,15 @@
         font-style: italic;
     }
 </style>
+<script src="/javascripts/tasks.js"></script>
 <h1>Tasks</h1>
 <hr>
-<ol>
+<ol class="taskList">
    {{#each tasks}}
        {{#if isCompleted}}
-           <li class='completed'>
+           <li class='completed' data-id="{{id}}">
        {{else}}
-           <li>
+           <li data-id="{{id}}">
        {{/if}}
         {{name}} <a href="/tasks/toggle/{{id}}">X</a></li>
    {{/each}}
